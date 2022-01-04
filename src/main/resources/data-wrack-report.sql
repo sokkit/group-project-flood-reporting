@@ -109,4 +109,44 @@ VALUES(NULL, 12, NULL, "coastal flooding", 1, "./images/test-data/2imVP6Sy5shUMU
 
 INSERT INTO `metadata`
 VALUES(NULL, NULL, NULL, NULL);
+
+DROP USER IF EXISTS 'wrackReport'@'localhost';
+CREATE USER 'wrackReport'@'localhost' IDENTIFIED BY 'team3';
+GRANT SELECT ON `wrack-report`.`categories` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`staff_users` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`report_overview` TO 'wrackReport'@'localhost';
+GRANT SELECT ON `wrack-report`.`detailed_report` TO 'wrackReport'@'localhost';
+GRANT UPDATE ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT UPDATE ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`categories` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`staff_users` TO 'wrackReport'@'localhost';
+GRANT TRIGGER ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`categories` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`staff_users` TO 'wrackReport'@'localhost';
+GRANT SHOW VIEW ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`detailed_report` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`report_overview` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT ALTER ON `wrack-report`.`staff_users` TO 'wrackReport'@'localhost';
+
 SET FOREIGN_KEY_CHECKS = 1;

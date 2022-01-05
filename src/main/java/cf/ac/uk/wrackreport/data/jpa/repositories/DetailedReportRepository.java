@@ -10,4 +10,6 @@ public interface DetailedReportRepository extends JpaRepository<DetailedReportEn
     ArrayList<DetailedReportEntity> findAll();
 
     Optional<DetailedReportEntity> findAllByReportId(Long reportId);
+
+    Optional<DetailedReportEntity> findAllByReportPath(String reportPath);
 }

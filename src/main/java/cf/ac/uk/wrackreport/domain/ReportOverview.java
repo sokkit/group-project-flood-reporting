@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class ReportOverview {
     private Long reportId;
+    private String reportPath;
     private String datetime;
     private String categoryName;
     private Float depthMeters;

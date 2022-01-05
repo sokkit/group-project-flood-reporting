@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ReportDTO {
     Long reportId;
+    String reportPath;
     UserDTO user;
     short categoryId;
     String description;
@@ -28,7 +29,7 @@ public class ReportDTO {
     public ReportDTO(Report aReport) {
         this(
                 aReport.getReportId(),
-//                aReport.getUser(),
+                aReport.getReportPath(),
                 new UserDTO(aReport.getUser().getUserId(),aReport.getUser().getRoles(),aReport.getUser().getFirstName(),
                         aReport.getUser().getSurname(),aReport.getUser().getEmail(),aReport.getUser().getPhoneNumber(),
                         aReport.getUser().getPassword(),aReport.getUser().getActive()),
@@ -47,6 +48,7 @@ public class ReportDTO {
 
     public Report toReport() {
         return new Report(reportId,
+                reportPath,
                 new User(this.getUser().getUserId(), this.getUser().getRoles(), this.getUser().getFirstName(),
                         this.getUser().getSurname(), this.getUser().getEmail(), this.getUser().getPhoneNumber(),
                         this.getUser().getPassword(), this.getUser().getActive()),

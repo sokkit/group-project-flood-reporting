@@ -22,6 +22,9 @@ public class ReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportId;
 
+    @Column(name = "report_path")
+    private String reportPath;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserEntity user;
@@ -61,6 +64,7 @@ public class ReportEntity {
 //    Create report entity from domain object
     public ReportEntity(Report aReport) {
         this.reportId = aReport.getReportId();
+        this.reportPath = aReport.getReportPath();
         this.user = new UserEntity(aReport.getUser().getUserId(),aReport.getUser().getRoles(),aReport.getUser().getFirstName(),
                 aReport.getUser().getSurname(),aReport.getUser().getEmail(),aReport.getUser().getPhoneNumber(),
                 aReport.getUser().getPassword(),aReport.getUser().getActive());
@@ -89,6 +93,7 @@ public class ReportEntity {
     public Report toDomain() {
         Report domainReport = new Report (
                 this.reportId,
+                this.reportPath,
                 this.user.toDomain(),
                 this.categoryId,
                 this.description,

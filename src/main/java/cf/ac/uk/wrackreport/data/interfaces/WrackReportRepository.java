@@ -50,6 +50,8 @@ public interface WrackReportRepository {
     
     Optional<DetailedReport> findAllByReportId(Long reportId);
 
+    Optional<DetailedReport> findAllByReportPath(String reportPath);
+
     List<Media> findAllMediaByReportId(Long reportId);
 
     List<User> findAllUsers();

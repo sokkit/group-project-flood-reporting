@@ -8,6 +8,7 @@ import lombok.Value;
 @AllArgsConstructor
 public class DetailedReportDTO {
     Long reportId;
+    String reportPath;
     String datetime;
     String localAuthority;
     String postcode;
@@ -23,6 +24,7 @@ public class DetailedReportDTO {
     public DetailedReportDTO(DetailedReport aDetailedReport) {
         this(
                 aDetailedReport.getReportId(),
+                aDetailedReport.getReportPath(),
                 aDetailedReport.getDatetime(),
                 aDetailedReport.getLocalAuthority(),
                 aDetailedReport.getPostcode(),
@@ -38,6 +40,6 @@ public class DetailedReportDTO {
     }
 
     public DetailedReport toDetailedReport() {
-        return new DetailedReport(reportId, datetime, localAuthority, postcode, categoryName, depthMeters, description, firstName, surname, email, phoneNumber, status);
+        return new DetailedReport(reportId, reportPath, datetime, localAuthority, postcode, categoryName, depthMeters, description, firstName, surname, email, phoneNumber, status);
     }
 }

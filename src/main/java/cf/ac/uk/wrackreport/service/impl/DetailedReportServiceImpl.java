@@ -46,4 +46,19 @@ public class DetailedReportServiceImpl implements DetailedReportService {
             return Optional.empty();
         }
     }
+
+    @Override
+    public Optional<DetailedReportDTO> findAllByReportPath(String reportPath) {
+        log.debug("Searching for detailed reports with path: " + reportPath);
+
+        Optional<DetailedReport> detailedReport = wrackReportRepository.findAllByReportPath(reportPath);
+        if (detailedReport.isPresent()) {
+            log.debug("Found detailed report. Converting to DTO");
+            DetailedReportDTO detailedReportDTO = new DetailedReportDTO(detailedReport.get());
+            return Optional.of(detailedReportDTO);
+        } else {
+            log.debug("Did not find detailed report with path: " + reportPath);
+            return Optional.empty();
+        }
+    }
 }

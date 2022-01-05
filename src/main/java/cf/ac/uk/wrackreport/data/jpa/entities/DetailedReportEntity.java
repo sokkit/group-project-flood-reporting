@@ -18,6 +18,9 @@ public class DetailedReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportId;
 
+    @Column(name = "report_path")
+    private String reportPath;
+
     @Column(name = "datetime")
     private String datetime;
 
@@ -53,6 +56,7 @@ public class DetailedReportEntity {
 
     public DetailedReportEntity(DetailedReport detailedReport) {
         this.reportId = detailedReport.getReportId();
+        this.reportPath = detailedReport.getReportPath();
         this.datetime = detailedReport.getDatetime();
         this.localAuthority = detailedReport.getLocalAuthority();
         this.postcode = detailedReport.getPostcode();
@@ -69,6 +73,7 @@ public class DetailedReportEntity {
     public DetailedReport toDomain() {
         DetailedReport domainDetailedReport = new DetailedReport (
                 this.reportId,
+                this.reportPath,
                 this.datetime,
                 this.localAuthority,
                 this.postcode,

@@ -29,6 +29,7 @@ CREATE TABLE `staff_users` (
 
 CREATE TABLE `reports` (
 	`report_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+    `report_path` VARCHAR(20) NOT NULL,
     `user_id` INT NOT NULL,
     `category_id` INT NOT NULL,
     `description` VARCHAR(2500) NOT NULL,
@@ -90,14 +91,14 @@ ADD FOREIGN KEY (`metadata_id`) REFERENCES `metadata`(`metadata_id`);
 -- Views --
 
 CREATE VIEW report_overview AS
-SELECT r.report_id, r.datetime, c.category_name, r.depth_meters, r.postcode, r.local_authority, r.status
+SELECT r.report_id, r.report_path, r.datetime, c.category_name, r.depth_meters, r.postcode, r.local_authority, r.status
 FROM reports r
 INNER JOIN categories c
 ON r.category_id = c.category_id;
 -- SELECT * FROM report_overview;
 
 CREATE VIEW detailed_report AS
-SELECT r.report_id, r.datetime, r.local_authority, r.postcode, c.category_name, r.depth_meters, r.description, u.first_name, u.surname, u.email, u.phone_number, r.status
+SELECT r.report_id, r.report_path, r.datetime, r.local_authority, r.postcode, c.category_name, r.depth_meters, r.description, u.first_name, u.surname, u.email, u.phone_number, r.status
 FROM reports r
 INNER JOIN categories c
 ON r.category_id = c.category_id

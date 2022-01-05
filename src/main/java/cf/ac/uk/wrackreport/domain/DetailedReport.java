@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DetailedReport {
     private Long reportId;
+    private String reportPath;
     private String datetime;
     private String localAuthority;
     private String postcode;

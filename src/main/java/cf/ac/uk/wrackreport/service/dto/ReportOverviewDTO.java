@@ -9,6 +9,7 @@ import lombok.Value;
 
 public class ReportOverviewDTO {
     Long reportId;
+    String reportPath;
     String datetime;
     String categoryName;
     Float depthMeters;
@@ -19,6 +20,7 @@ public class ReportOverviewDTO {
     public ReportOverviewDTO(ReportOverview reportOverview){
         this(
                 reportOverview.getReportId(),
+                reportOverview.getReportPath(),
                 reportOverview.getDatetime(),
                 reportOverview.getCategoryName(),
                 reportOverview.getDepthMeters(),
@@ -29,7 +31,7 @@ public class ReportOverviewDTO {
 
     }
     public ReportOverview toReportOverview(){
-        return new ReportOverview(reportId,datetime,categoryName,depthMeters,postcode,localAuthority,status);
+        return new ReportOverview(reportId, reportPath, datetime,categoryName,depthMeters,postcode,localAuthority,status);
     }
 
 }

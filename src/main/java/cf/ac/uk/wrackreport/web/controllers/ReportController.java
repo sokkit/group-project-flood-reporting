@@ -243,6 +243,7 @@ public class ReportController {
 
             ReportDTO reportDTO = new ReportDTO(
                     reportForm.getReportId(),
+                    RandomStringUtils.randomAlphanumeric(20),
                     userDTO,
 //                    2L,
                     reportForm.getCategoryId(),
@@ -278,8 +279,8 @@ public class ReportController {
         } else {
             ReportDTO reportDTO = new ReportDTO(
                     reportForm.getReportId(),
+                    RandomStringUtils.randomAlphanumeric(20),
                     userDTO,
-//                    2L,
                     reportForm.getCategoryId(),
                     reportForm.getDescription(),
                     reportForm.getDepthCategoryId(),

@@ -17,6 +17,8 @@ public class ReportOverviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportId;
+    @Column(name = "report_path")
+    private String reportPath;
     @Column(name = "datetime")
     private String datetime;
     @Column(name = "category_name")
@@ -32,6 +34,7 @@ public class ReportOverviewEntity {
 
     public ReportOverviewEntity(ReportOverview aReportOverview){
         this.reportId = aReportOverview.getReportId();
+        this.reportPath = aReportOverview.getReportPath();
         this.datetime = aReportOverview.getDatetime();
         this.categoryName = aReportOverview.getCategoryName();
         this.depthMeters = aReportOverview.getDepthMeters();
@@ -43,6 +46,7 @@ public class ReportOverviewEntity {
     public ReportOverview toDomain(){
         ReportOverview domainReportOverview = new ReportOverview(
                 this.reportId,
+                this.reportPath,
                 this.datetime,
                 this.categoryName,
                 this.depthMeters,

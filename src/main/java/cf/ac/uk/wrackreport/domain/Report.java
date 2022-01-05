@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Report {
     private Long reportId;
+    private String reportPath;
     private User user;
     private short categoryId;
     private String description;
@@ -24,8 +25,9 @@ public class Report {
     private List<Media> media;
     private int status;
 
-    public Report(Long reportId, User user, short categoryId, String description, short depthCategoryId, Float depthMeters, String latLong, String datetime, String postcode, String localAuthority, int status) {
+    public Report(Long reportId, String reportPath, User user, short categoryId, String description, short depthCategoryId, Float depthMeters, String latLong, String datetime, String postcode, String localAuthority, int status) {
         this.reportId = reportId;
+        this.reportPath = reportPath;
         this.user = user;
         this.categoryId = categoryId;
         this.description = description;

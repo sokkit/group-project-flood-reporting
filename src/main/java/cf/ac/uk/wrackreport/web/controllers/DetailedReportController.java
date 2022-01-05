@@ -29,10 +29,10 @@ public class DetailedReportController {
     }
 
     @GetMapping("/detailed-report/{furl}")
-    public String showDetailedReportByID(@PathVariable(value = "furl", required = true) Long reportId, Model model) {
+    public String showDetailedReportByID(@PathVariable(value = "furl", required = true) String furl, Model model) {
         Optional<DetailedReportDTO> detailedReportDTO;
-        detailedReportDTO = detailedReportService.findAllByReportId(reportId);
-        List<MediaDTO> mediaDTOS = mediaService.findAllMediaByReportId(reportId);
+        detailedReportDTO = detailedReportService.findAllByReportPath(furl);
+        List<MediaDTO> mediaDTOS = mediaService.findAllMediaByReportId(detailedReportDTO.get().getReportId());
 
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -10,4 +10,6 @@ public interface DetailedReportService {
     List<DetailedReportDTO> findAllDetailedReport();
 
     Optional<DetailedReportDTO> findAllByReportId(Long reportId);
+
+    Optional<DetailedReportDTO> findAllByReportPath(String reportPath);
 }

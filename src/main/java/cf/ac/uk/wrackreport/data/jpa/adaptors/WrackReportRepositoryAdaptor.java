@@ -194,6 +194,16 @@ public class WrackReportRepositoryAdaptor implements WrackReportRepository {
         }
     }
 
+    public Optional<DetailedReport> findAllByReportPath(String reportPath) {
+        Optional<DetailedReportEntity> detailedReportEntity = detailedReportRepository.findAllByReportPath(reportPath);
+
+        if (detailedReportEntity.isPresent()) {
+            return Optional.of(detailedReportEntity.get().toDomain());
+        } else {
+            return Optional.empty();
+        }
+    }
+
     public List<Media> findAllMediaByReportId(Long reportId){
         return mediaRepository.findAllMediaByReportId(reportId)
                 .stream()

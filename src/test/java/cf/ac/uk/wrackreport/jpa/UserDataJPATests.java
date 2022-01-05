@@ -5,6 +5,7 @@ import cf.ac.uk.wrackreport.data.jpa.entities.ReportEntity;
 import cf.ac.uk.wrackreport.data.jpa.entities.UserEntity;
 import cf.ac.uk.wrackreport.data.jpa.repositories.ReportRepository;
 import cf.ac.uk.wrackreport.data.jpa.repositories.UserRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -53,7 +54,7 @@ public class UserDataJPATests {
         List<MediaEntity> media = new ArrayList<MediaEntity>();
         MediaEntity testMedia = new MediaEntity(null,null,null,"testMedia",1,"testpath");
         media.add(testMedia);
-        ReportEntity testReport = new ReportEntity(null, testUser, (short)2, "test desc", (short)2, 0.2f, "51.896156,-3.933956", "2021-11-19 22:20:00", "CF24 4LR", "Cardiff", 0, media);
+        ReportEntity testReport = new ReportEntity(null, RandomStringUtils.randomAlphanumeric(20), testUser, (short)2, "test desc", (short)2, 0.2f, "51.896156,-3.933956", "2021-11-19 22:20:00", "CF24 4LR", "Cardiff", 0, media);
 
         // When report saved to database
         ReportEntity insertedReport = reportRepository.save(testReport);

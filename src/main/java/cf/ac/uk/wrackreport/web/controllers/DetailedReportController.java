@@ -6,6 +6,7 @@ import cf.ac.uk.wrackreport.service.ReportService;
 import cf.ac.uk.wrackreport.service.dto.DetailedReportDTO;
 import cf.ac.uk.wrackreport.service.dto.MediaDTO;
 import cf.ac.uk.wrackreport.service.dto.ReportDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;

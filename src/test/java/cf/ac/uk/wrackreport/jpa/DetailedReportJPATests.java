@@ -6,6 +6,7 @@ import cf.ac.uk.wrackreport.data.jpa.entities.ReportEntity;
 import cf.ac.uk.wrackreport.data.jpa.entities.UserEntity;
 import cf.ac.uk.wrackreport.data.jpa.repositories.DetailedReportRepository;
 import cf.ac.uk.wrackreport.data.jpa.repositories.ReportRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -44,7 +45,7 @@ public class DetailedReportJPATests {
     public void shouldGet13DetailedReportsAfterInsert() throws Exception {
         // Add a new report
         UserEntity user = new UserEntity(null, "ROLE_USER", "firstname", "lastname", "test@gmail.com", "07888747748", null, true);
-        ReportEntity reportEntity = new ReportEntity(null, user, (short)2, "test description", (short)2, 0.8f, "51.896156,-3.933956", "2021-11-19 22:20:00", "CF24 4LR", "Cardiff", 0, null);
+        ReportEntity reportEntity = new ReportEntity(null, RandomStringUtils.randomAlphanumeric(20), user, (short)2, "test description", (short)2, 0.8f, "51.896156,-3.933956", "2021-11-19 22:20:00", "CF24 4LR", "Cardiff", 0, null);
         reportRepository.save(reportEntity);
 
         // Retrieve all detailed reports from the database

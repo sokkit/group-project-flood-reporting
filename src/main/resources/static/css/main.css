@@ -98,3 +98,13 @@ a {
 #map-contents {
     height: 75vh;
 }
+
+.loginFormSecondary {
+    margin: auto;
+    width: 50%;
+}
+
+.loginButtonSecondary {
+    margin:0 auto;
+    display:block;
+}

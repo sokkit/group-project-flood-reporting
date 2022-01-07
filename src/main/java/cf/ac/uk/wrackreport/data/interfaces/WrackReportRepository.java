@@ -15,6 +15,8 @@ import java.util.Optional;
 public interface WrackReportRepository {
 
     void saveReport(Report aReport);
+
+    void saveReportFormError(ReportFormError aReportFormError);
     
     ArrayList<Category> findAllCategories();
 

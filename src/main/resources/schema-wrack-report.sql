@@ -16,6 +16,14 @@ CREATE TABLE `users` (
     CONSTRAINT `PK_users` PRIMARY KEY (`user_id`)
 ); 
 
+CREATE TABLE `report_form_errors` (
+	`error_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+    `field` VARCHAR(45),
+    `error_message` VARCHAR(100),
+    `date_time` VARCHAR(30),
+    CONSTRAINT `PK_form_errors` PRIMARY KEY (`error_id`)
+); 
+
 CREATE TABLE `staff_users` (
 	`user_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
     `roles` VARCHAR(45) NOT NULL,

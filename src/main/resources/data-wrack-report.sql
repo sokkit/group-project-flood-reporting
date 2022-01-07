@@ -129,6 +129,7 @@ GRANT INSERT ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`report_form_errors` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`categories` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
@@ -149,6 +150,8 @@ GRANT CREATE ON `wrack-report`.`media` TO 'wrackReport'@'localhost';
 GRANT CREATE ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
 GRANT CREATE ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
 GRANT CREATE ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
+GRANT CREATE ON `wrack-report`.`report_form_errors` TO 'wrackReport'@'localhost';
 GRANT ALTER ON `wrack-report`.`staff_users` TO 'wrackReport'@'localhost';
+GRANT ALTER ON `wrack-report`.`report_form_errors` TO 'wrackReport'@'localhost';
 
 SET FOREIGN_KEY_CHECKS = 1;

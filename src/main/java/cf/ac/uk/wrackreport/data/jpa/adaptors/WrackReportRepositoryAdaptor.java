@@ -28,8 +28,9 @@ public class WrackReportRepositoryAdaptor implements WrackReportRepository {
     private StaffUserRepository staffUserRepository;
     private ReportOverviewRepository reportOverviewRepository;
     private DetailedReportRepository detailedReportRepository;
+    private ReportFormErrorRepository reportFormErrorRepository;
 
-    public WrackReportRepositoryAdaptor(ReportRepository repo, CategoryRepository cat, DepthCategoryRepository depthCat, UserRepository uRepo, MediaRepository mRepo, StaffUserRepository sRepo, ReportOverviewRepository roRepo, DetailedReportRepository drRepo) {
+    public WrackReportRepositoryAdaptor(ReportRepository repo, CategoryRepository cat, DepthCategoryRepository depthCat, UserRepository uRepo, MediaRepository mRepo, StaffUserRepository sRepo, ReportOverviewRepository roRepo, DetailedReportRepository drRepo, ReportFormErrorRepository erRepo) {
         reportRepository = repo;
         categoryRepository = cat;
         depthCategoryRepository = depthCat;
@@ -38,12 +39,17 @@ public class WrackReportRepositoryAdaptor implements WrackReportRepository {
         staffUserRepository = sRepo;
         reportOverviewRepository = roRepo;
         detailedReportRepository = drRepo;
-
+        reportFormErrorRepository = erRepo;
     }
 
     public void saveReport(Report aReport) {
         ReportEntity reportEntity = new ReportEntity(aReport);
         reportRepository.save(reportEntity);
+    }
+
+    public void saveReportFormError(ReportFormError aReportFormError) {
+        ReportFormErrorEntity reportFormErrorEntity = new ReportFormErrorEntity(aReportFormError);
+        reportFormErrorRepository.save(reportFormErrorEntity);
     }
 
     public ArrayList<Category> findAllCategories(){

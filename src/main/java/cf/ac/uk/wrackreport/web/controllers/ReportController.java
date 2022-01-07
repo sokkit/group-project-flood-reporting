@@ -5,9 +5,11 @@ import cf.ac.uk.wrackreport.domain.Media;
 import cf.ac.uk.wrackreport.service.CategoryService;
 import cf.ac.uk.wrackreport.api.postcode.Postcode;
 import cf.ac.uk.wrackreport.service.DepthCategoryService;
+import cf.ac.uk.wrackreport.service.ReportFormErrorService;
 import cf.ac.uk.wrackreport.service.ReportService;
 import cf.ac.uk.wrackreport.service.dto.CategoryDTO;
 import cf.ac.uk.wrackreport.service.dto.ReportDTO;
+import cf.ac.uk.wrackreport.service.dto.ReportFormErrorDTO;
 import cf.ac.uk.wrackreport.service.dto.UserDTO;
 import cf.ac.uk.wrackreport.web.controllers.forms.ReportForm;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
@@ -43,12 +47,14 @@ public class ReportController {
     private CategoryService categoryService;
     private DepthCategoryService depthCategoryService;
     private ReportRepository reportRepository;
+    private ReportFormErrorService reportFormErrorService;
 
-    public ReportController(ReportService reportService, CategoryService categoryService, DepthCategoryService depthCategoryService1, ReportRepository reportRepository){
+    public ReportController(ReportService reportService, CategoryService categoryService, DepthCategoryService depthCategoryService1, ReportRepository reportRepository, ReportFormErrorService reportFormErrorService){
         this.reportService = reportService;
         this.categoryService = categoryService;
         this.depthCategoryService = depthCategoryService1;
         this.reportRepository = reportRepository;
+        this.reportFormErrorService = reportFormErrorService;
     }
 
 
@@ -143,6 +149,17 @@ public class ReportController {
         if (bindingResult.hasErrors()) {
             log.debug("THERE ARE ERRORS" + bindingResult.getAllErrors());
             System.out.println("THERE ARE ERRORS" + bindingResult.getAllErrors());
+            for (ObjectError e: bindingResult.getAllErrors()
+                 ) {
+                // reference get field from binding result
+                // https://stackoverflow.com/a/51635372/14457259
+                String errorField = ((FieldError) e).getField();
+                // end of reference
+                String errorMsg = e.getDefaultMessage();
+                String dateTime = LocalDateTime.now().toString();
+                ReportFormErrorDTO reportFormErrorDTO = new ReportFormErrorDTO(null, errorField, errorMsg, dateTime);
+                reportFormErrorService.saveReportFormError(reportFormErrorDTO);
+            }
             model.addAttribute("categories", categoryService.findAll());
             model.addAttribute("depthCategories", depthCategoryService.findAll());
             model.addAttribute("allReports", reportRepository.findAll());

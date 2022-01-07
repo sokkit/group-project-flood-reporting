@@ -17,6 +17,7 @@ import org.springframework.util.ClassUtils;
 import java.time.LocalDateTime;
 // Reference - Spring Security Logger Listener
 // https://github.com/spring-projects/spring-security/blob/main/core/src/main/java/org/springframework/security/authentication/event/LoggerListener.java
+// Logs if login was successful, email address, IP address, date & time, session ID
 @Component
 public class AuditEventLogger implements ApplicationListener<AbstractAuthenticationEvent> {
 

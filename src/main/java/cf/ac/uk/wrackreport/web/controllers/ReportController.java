@@ -157,6 +157,7 @@ public class ReportController {
                 // end of reference
                 String errorMsg = e.getDefaultMessage();
                 String dateTime = LocalDateTime.now().toString();
+                // Save errors to report for error table
                 ReportFormErrorDTO reportFormErrorDTO = new ReportFormErrorDTO(null, errorField, errorMsg, dateTime);
                 reportFormErrorService.saveReportFormError(reportFormErrorDTO);
             }
@@ -296,6 +297,7 @@ public class ReportController {
         } else {
             ReportDTO reportDTO = new ReportDTO(
                     reportForm.getReportId(),
+                    // Add random string for path field
                     RandomStringUtils.randomAlphanumeric(20),
                     userDTO,
                     reportForm.getCategoryId(),

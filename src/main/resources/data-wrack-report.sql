@@ -130,6 +130,7 @@ GRANT INSERT ON `wrack-report`.`metadata` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`reports` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`users` TO 'wrackReport'@'localhost';
 GRANT INSERT ON `wrack-report`.`report_form_errors` TO 'wrackReport'@'localhost';
+GRANT INSERT ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`categories` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`depth_categories` TO 'wrackReport'@'localhost';
 GRANT TRIGGER ON `wrack-report`.`media` TO 'wrackReport'@'localhost';

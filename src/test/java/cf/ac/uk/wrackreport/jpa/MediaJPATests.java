@@ -10,8 +10,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +34,14 @@ public class MediaJPATests {
     MediaRepository mediaRepository;
 
     @Test
-    public void shouldGetEightMedia() throws Exception {
+    public void shouldGetSevenMedia() throws Exception {
+        List<MediaEntity> res = mediaRepository.findAll();
+        System.out.println(res);
+        assertEquals(7, res.size());
+    }
+
+    @Test
+    public void shouldGetEightMediaAfterInput() throws Exception {
         List<MediaEntity> media = new ArrayList<MediaEntity>();
         UserEntity user = new UserEntity(null, "ROLE_USER", "firstname", "lastname", "test@gmail.com", "07888747748", null, true);
         MediaEntity testMedia = new MediaEntity(null,null,null,"testMedia",1,"testpath");

@@ -17,4 +17,6 @@ The GitLab repository is: https://git.cardiff.ac.uk/c2061455/wrack-report-206145
 
 Now the project has been built it can also be run from the JAR file. Go to /build/libs/ and open cmd in that location. Type in “java -DJASYPT_ENCRYPTOR_PASSWORD=T34M-3 -jar WrackReport-0.0.1-SNAPSHOT.jar” and press enter
 
+Running with bootrun is preferred as there appears to be problems uploading media to reports when running from a jar.
+
 

@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.6'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'checkstyle'
 }
 
 group = 'cf.ac.uk'
@@ -43,6 +44,17 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.3.12.RELEASE'
     compileOnly "org.springframework.boot:spring-boot-devtools"
+}
+
+checkstyle {
+    toolVersion = 8.25
+    checkstyleMain.enabled = true
+    checkstyleTest.enabled = false
+}
+
+checkstyleMain {
+    configFile = rootProject.file('config/checkstyle/checkstyleMain.xml')
+    maxErrors = 10
 }
 
 

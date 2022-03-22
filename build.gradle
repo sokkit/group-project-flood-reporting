@@ -62,5 +62,8 @@ checkstyleMain {
 test {
     systemProperty "JASYPT_ENCRYPTOR_PASSWORD", findProperty("JASYPT_ENCRYPTOR_PASSWORD")
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
 

@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.exceptionHandling().authenticationEntryPoint(new Http403ForbiddenEntryPoint());
+//        http.exceptionHandling().authenticationEntryPoint(new Http403ForbiddenEntryPoint());
         //Configure which pages require logging in
         http
 //                .csrf().disable()

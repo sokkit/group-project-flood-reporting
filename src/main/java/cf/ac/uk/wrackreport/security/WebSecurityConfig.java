@@ -46,16 +46,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                 .mvcMatchers("/category/**").permitAll()
                                 .antMatchers("/login").permitAll()
                                 .anyRequest().denyAll()
-                
         )
-
-                .formLogin(formLogin ->
-                        formLogin
-                                .permitAll()
+        .formLogin(formLogin ->
+                formLogin
+                        .permitAll()
                                 .defaultSuccessUrl("/reports-overview", true)
-                ).logout(logout ->
-                        logout
-                                .permitAll());
+        ).logout(logout ->
+                logout
+                        .permitAll());
     }
 
 

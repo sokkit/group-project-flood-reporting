@@ -67,7 +67,7 @@ VALUES(NULL, 'Other');
 
 -- Reference create random string taken from https://sebhastian.com/mysql-random-string/
 INSERT INTO `reports`
-VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 3, 1, "Water is coming up from the drainage holes in the street", 6, 0.05, "52.422523, -3.554077", "2021-12-02  13:06:00", "SY18 6RG", "Powys", 0);
+VALUES (NULL, "cb3f83eb20d89a2347b7", 3, 1, "Water is coming up from the drainage holes in the street", 6, 0.05, "52.422523, -3.554077", "2021-12-02  13:06:00", "SY18 6RG", "Powys", 0);
 INSERT INTO `reports`
 VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 4, 4, "Debris left behind from flooding yesterday", 6, 0.02, "51.496361, -3.186669", "2021-12-02  09:09:00", "cf24 4lr", "Cardiff", 0);
 INSERT INTO `reports`
@@ -77,7 +77,7 @@ VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 6, 3, "Huge storm and waves last night
 INSERT INTO `reports`
 VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 7, 1, "Sewage drain unit near my house is bubbling and overflowing", 1, 0.3456, "51.856139, -4.290161", "2021-10-07  08:20:00", "SA31 2HR", "Carmarthenshire", -1);
 INSERT INTO `reports`
-VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 8, 2, "River has completely overflowed and the flooding has reached the park", 1, 0.3456, "51.744038, -3.378296", "2021-11-29  14:17:00", "CF47 8EU", "Merthyr Tydfil", 0);
+VALUES (NULL, "0d6782d0f3dc61f78d82", 8, 2, "River has completely overflowed and the flooding has reached the park", 1, 0.3456, "51.744038, -3.378296", "2021-11-29  14:17:00", "CF47 8EU", "Merthyr Tydfil", 0);
 INSERT INTO `reports`
 VALUES (NULL, SUBSTR(MD5(RAND()), 1, 20), 9, 4, "Lots of rubbish washed up near my shop from flood on 01/12/2021", 0, 0.3456, "51.500194, -3.562317", "2021-12-01  13:25:00", "CF31 3RF", "Bridgend", -1);
 INSERT INTO `reports`

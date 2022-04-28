@@ -178,7 +178,7 @@ public class ReportController {
             ArrayList<MultipartFile> formFiles = reportForm.getFiles();
 
             //If there are files attached from the form...
-            if (!formFiles.get(0).isEmpty()) {
+//            if (!formFiles.get(0).isEmpty()) {
                 //loop through files
                 for (MultipartFile f: formFiles) {
                     //Create random string
@@ -214,7 +214,7 @@ public class ReportController {
                     //Add media to list that will be added to ReportDTO
                     mediaArrayList.add(new Media(null, null, null, fileTitle,type,filePath));
                 }
-            }
+//            }
         } catch (IOException e) {
             throw new IOException("could not access file: " + e);
         }

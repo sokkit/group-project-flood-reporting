@@ -178,3 +178,5 @@ BEGIN
     
 END //
 DELIMITER ;
+
+set global max_connections = 32767;

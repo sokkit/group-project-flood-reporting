@@ -12,6 +12,12 @@ import cf.ac.uk.wrackreport.service.dto.ReportDTO;
 import cf.ac.uk.wrackreport.service.dto.ReportFormErrorDTO;
 import cf.ac.uk.wrackreport.service.dto.UserDTO;
 import cf.ac.uk.wrackreport.web.controllers.forms.ReportForm;
+import java.awt.image.BufferedImage;
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageWriteParam;
+import javax.imageio.ImageWriter;
+import javax.imageio.stream.ImageOutputStream;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -199,18 +205,42 @@ public class ReportController {
 
                     if (videoExtensions.contains(ext)) {
                         type = 2;
+                    // reference - compress image
+                    // adapted from https://www.tutorialspoint.com/java_dip/image_compression_technique.htm to use multipart file and use random file path
                     } else if (imageExtensions.contains(ext)) {
                         type = 1;
+                        BufferedImage image = ImageIO.read(f.getInputStream());
+
+                        File compressedImageFile = new File("src\\main\\resources\\static\\images\\report-media\\" +generatedString + "." + ext);
+                        OutputStream os =new FileOutputStream(compressedImageFile);
+
+                        Iterator<ImageWriter>writers =  ImageIO.getImageWritersByFormatName("jpg");
+                        ImageWriter writer = (ImageWriter) writers.next();
+
+                        ImageOutputStream ios = ImageIO.createImageOutputStream(os);
+                        writer.setOutput(ios);
+
+                        ImageWriteParam param = writer.getDefaultWriteParam();
+
+                        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+                        param.setCompressionQuality(0.5f);
+                        writer.write(null, new IIOImage(image, null, null), param);
+
+                        os.close();
+                        ios.close();
+                        writer.dispose();
                     }
+                    // end of reference
+
 
                    //path is random string + file extension
                     String filePath = "./images/report-media/" + generatedString + "." + ext;
-                    File file = new File("src\\main\\resources\\static\\images\\report-media\\" +generatedString + "." + ext);
-
-                    //Write file
-                    try (OutputStream os = new FileOutputStream(file)) {
-                        os.write(f.getBytes());
-                    }
+//                    File file = new File("src\\main\\resources\\static\\images\\report-media\\" +generatedString + "." + ext);
+//
+//                    //Write file
+//                    try (OutputStream os = new FileOutputStream(file)) {
+//                        os.write(f.getBytes());
+//                    }
                     //Add media to list that will be added to ReportDTO
                     mediaArrayList.add(new Media(null, null, null, fileTitle,type,filePath));
                 }

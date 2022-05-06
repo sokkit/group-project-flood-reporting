@@ -46,12 +46,12 @@ dependencies {
     compileOnly "org.springframework.boot:spring-boot-devtools"
 }
 
-checkstyle {
-    toolVersion = 8.25
-    checkstyleMain.enabled = true
-    checkstyleTest.enabled = false
-    ignoreFailures = true
-}
+//checkstyle {
+//    toolVersion = 8.25
+//    checkstyleMain.enabled = true
+//    checkstyleTest.enabled = false
+//    ignoreFailures = true
+//}
 
 checkstyleMain {
     configFile = rootProject.file('config/checkstyle/checkstyleMain.xml')
